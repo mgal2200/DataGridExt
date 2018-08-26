@@ -1,0 +1,25 @@
+﻿<local:BaseFilterContainer
+    xmlns:local="clr-namespace:Controlls" x:Class="Controlls.NumberFilterContainer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         ColumnOwner="{Binding Column,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridColumnHeader}}}"
+        >
+
+    <local:BaseFilterContainer.Resources>
+        <ResourceDictionary Source="/dict.xaml"/>
+
+    </local:BaseFilterContainer.Resources>
+    <StackPanel >
+       
+        <Popup IsOpen="{Binding IsChecked,ElementName=tgl}">
+            <StackPanel Name="fltrPanel" Style="{StaticResource panelStyle}" >
+                <UniformGrid Rows="2">
+                    <TextBox Name="txbxFrom"  Text="{Binding From,UpdateSourceTrigger=PropertyChanged }"  DockPanel.Dock="Left"></TextBox>
+                    <TextBox Name="txbxTo" Text="{Binding To,UpdateSourceTrigger=PropertyChanged }"  DockPanel.Dock="Right"></TextBox>
+                </UniformGrid>
+            </StackPanel>
+        </Popup>
+        <ToggleButton Name="tgl"/>
+    </StackPanel>
+   
+</local:BaseFilterContainer>

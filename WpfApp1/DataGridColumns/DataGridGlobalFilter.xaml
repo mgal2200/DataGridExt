@@ -1,0 +1,15 @@
+﻿<local:BaseFilterContainer
+    xmlns:local="clr-namespace:Controlls"
+      x:Class="Controlls.DataGridGlobalFilter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        >
+    <local:BaseFilterContainer.Resources>
+        <Style TargetType="TextBox" x:Key="txbxStyle">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinWidth" Value="200"/>
+        </Style>
+    </local:BaseFilterContainer.Resources>
+    <TextBox Text="{Binding FilterTerm,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource txbxStyle}" />
+</local:BaseFilterContainer>
