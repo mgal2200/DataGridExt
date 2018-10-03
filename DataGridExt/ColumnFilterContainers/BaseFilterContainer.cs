@@ -30,7 +30,10 @@ namespace Controlls
         public static readonly DependencyProperty DataGridOwnerProperty = DependencyProperty.Register("DataGridOwner", typeof(DataGridExt.Controlls.DataGridExt), typeof(BaseFilterContainer), new UIPropertyMetadata(new PropertyChangedCallback((DependencyObject s, DependencyPropertyChangedEventArgs e) =>
         {
             var me = s as BaseFilterContainer;
-            me.OnAttachToDataGrid(s, e);
+            if (e.NewValue != null)
+            {
+                me.OnAttachToDataGrid(s, e);
+            }
         })));
 
         public DataGridExt.Controlls.DataGridExt DataGridOwner

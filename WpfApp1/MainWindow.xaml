@@ -6,16 +6,35 @@
         xmlns:local1="clr-namespace:DataGridExt.Controlls;assembly=DataGridExt"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
-    <Grid >
-        <local1:DataGridExt x:Name="abc">
-            <DataGrid.Columns>
-                <!--<local:DataGridDateColumn Binding="{Binding DateTime}"/>
+    <TabControl>
+        <TabControl.Items>
+            <TabItem>
+                <Grid >
+                    <local1:DataGridExt x:Name="abc">
+                        <DataGrid.Columns>
+                            <!--<local:DataGridDateColumn Binding="{Binding DateTime}"/>
                 <local:DataGridTextFilterColumn Binding="{Binding Name}"/>
                 <local:DataGridNumberColumn  Binding="{Binding ID}"/>-->
 
-            </DataGrid.Columns>
-        </local1:DataGridExt>
-       
-    </Grid>
+                        </DataGrid.Columns>
+                    </local1:DataGridExt>
+
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <Grid >
+                    <local1:DataGridExt x:Name="abc1">
+                        <DataGrid.Columns>
+                            <!--<local:DataGridDateColumn Binding="{Binding DateTime}"/>
+                <local:DataGridTextFilterColumn Binding="{Binding Name}"/>
+                <local:DataGridNumberColumn  Binding="{Binding ID}"/>-->
+
+                        </DataGrid.Columns>
+                    </local1:DataGridExt>
+
+                </Grid>
+            </TabItem>
+        </TabControl.Items>
+    </TabControl>
+    
 </Window>

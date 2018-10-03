@@ -29,7 +29,11 @@ namespace WpfApp1
 
 
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e) => abc.ItemsSource = GetPersons();
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
+            abc.ItemsSource = GetPersons();
+            abc1.ItemsSource = GetPersons();
+
+        }
 
         List<Person> GetPersons()
         {

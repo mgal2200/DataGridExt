@@ -38,7 +38,8 @@ namespace Controlls
 
         private void DataGridOwner_Loaded(object sender, RoutedEventArgs e)
         {
-            Filter = new DateRangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
+            if (Filter == null)
+                Filter = new DateRangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
         }
         public override void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
         {
