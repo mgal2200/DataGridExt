@@ -27,6 +27,7 @@ namespace DataGridExt.Controlls
             InitializeComponent();
             DataContext = ModelView = new DataGridModelView(this);
             Loaded += DataGridPlus_Loaded;
+           
         }
 
         private void DataGridPlus_Loaded(object sender, RoutedEventArgs e)
@@ -35,11 +36,12 @@ namespace DataGridExt.Controlls
         }
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
-            var fldchoose = new FieldChooser(new FieldChooserModelView(ModelView.ItemType));
-            ModelView.RefreshColumns(fldchoose.FieldChooserModelView.AllFields );
+             var fldchoose = new FieldChooser(new FieldChooserModelView(ModelView.ItemType));
+             ModelView.RefreshColumns(fldchoose.FieldChooserModelView.AllFields );
+            ItemSourceChanged?.Invoke(oldValue, newValue);
         }
         public DataGridModelView ModelView { get; set; }
-
+        public event ItemSourceChangedEventHandler ItemSourceChanged;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var fldchoose = new FieldChooser(new FieldChooserModelView(ModelView.ItemType));
@@ -110,6 +112,7 @@ namespace DataGridExt.Controlls
             if (selectedFields.Count == 0)
             {
                 selectedFields = fieldsData.ToList();
+                selectedFields.ForEach((x) => { x.IsSelected = true; });
             }
             foreach (var fldData in selectedFields)
             {

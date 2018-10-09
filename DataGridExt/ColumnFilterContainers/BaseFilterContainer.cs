@@ -13,17 +13,18 @@ using System.Windows.Controls;
 using System.Windows.Data;
 namespace Controlls
 {
-    public   class BaseFilterContainer :StackPanel
+    public  abstract  class BaseFilterContainer :StackPanel
     {
         public BaseFilterContainer( )
         {
             Loaded += BaseFilterContainer_Loaded;
-        }
-        private void BaseFilterContainer_Loaded(object sender, RoutedEventArgs e)
-        {
             var bind = new Binding();
             bind.RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(DataGridExt.Controlls.DataGridExt), 1);
             SetBinding(DataGridOwnerProperty, bind);
+        }
+        private void BaseFilterContainer_Loaded(object sender, RoutedEventArgs e)
+        {
+            
             
         }
 
@@ -45,10 +46,19 @@ namespace Controlls
         public static readonly DependencyProperty DataGridColumnProperty = DependencyProperty.Register("ColumnOwner", typeof(IFilterColunm), typeof(BaseFilterContainer), new UIPropertyMetadata(new PropertyChangedCallback((DependencyObject s, DependencyPropertyChangedEventArgs e) =>
         {
             var me = s as BaseFilterContainer;
-          if (  me.DataGridOwner ==null)
+            if (me.DataGridOwner == null) { 
                 me.DataGridOwner = me.ColumnOwner.DataGridExt;
+                me.DataGridOwner.Loaded -= me.DataGridOwner_Loaded;
+                me.DataGridOwner.Loaded +=me. DataGridOwner_Loaded;
+
+            }
             me.OnAttachToDataGridColumn(s, e);
         })));
+
+        private   void DataGridOwner_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetFilterObj();
+        }
 
         public IFilterColunm ColumnOwner
         {
@@ -69,13 +79,28 @@ namespace Controlls
 
         }
 
+        public abstract IFilter GetFilterObj(); 
+
         public virtual void OnAttachToDataGrid(DependencyObject s, DependencyPropertyChangedEventArgs e)
         {
-
+            if (DataGridOwner != null)
+                DataGridOwner.ItemSourceChanged += DataGridOwner_ItemSourceChanged; ;
         }
+
+        private void DataGridOwner_ItemSourceChanged(System.Collections.IEnumerable oldValue, System.Collections.IEnumerable newValue)
+        {
+            SetFilterObj();
+        }
+
         public virtual void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
         {
+            SetFilterObj();
+        }
 
+      public   void SetFilterObj()
+        {
+            if (Filter == null && DataGridOwner.ModelView.ItemType != null)
+                Filter = GetFilterObj();
         }
     }
 }

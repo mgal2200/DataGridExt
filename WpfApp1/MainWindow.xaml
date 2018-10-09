@@ -4,36 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local1="clr-namespace:DataGridExt.Controlls;assembly=DataGridExt"
+        xmlns:controlls="clr-namespace:Controlls;assembly=DataGridExt"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl>
         <TabControl.Items>
             <TabItem>
                 <Grid >
-                    <local1:DataGridExt x:Name="abc">
+                    <!--<local1:DataGridExt x:Name="abc1">
                         <DataGrid.Columns>
-                            <!--<local:DataGridDateColumn Binding="{Binding DateTime}"/>
+                            <local:DataGridDateColumn Binding="{Binding DateTime}"/>
                 <local:DataGridTextFilterColumn Binding="{Binding Name}"/>
-                <local:DataGridNumberColumn  Binding="{Binding ID}"/>-->
+                <local:DataGridNumberColumn  Binding="{Binding ID}"/>
 
                         </DataGrid.Columns>
-                    </local1:DataGridExt>
+                    </local1:DataGridExt>-->
 
                 </Grid>
             </TabItem>
             <TabItem>
                 <Grid >
-                    <local1:DataGridExt x:Name="abc1">
-                        <DataGrid.Columns>
-                            <!--<local:DataGridDateColumn Binding="{Binding DateTime}"/>
-                <local:DataGridTextFilterColumn Binding="{Binding Name}"/>
-                <local:DataGridNumberColumn  Binding="{Binding ID}"/>-->
+                    
+                    <local1:DataGridExt x:Name="abc" AutoGenerateColumns="False" >
+                        <!--<DataGrid.Columns>
+                            <controlls:DataGridDateColumn Binding="{Binding DateTime}"/>
+                            <controlls:DataGridTextFilterColumn Binding="{Binding Name}"/>
+                            <controlls:DataGridNumberColumn  Binding="{Binding ID}"/>
 
-                        </DataGrid.Columns>
+                        </DataGrid.Columns>-->
                     </local1:DataGridExt>
 
                 </Grid>
             </TabItem>
+     
         </TabControl.Items>
     </TabControl>
     

@@ -29,22 +29,26 @@ namespace Controlls
             InitializeComponent();
         }
 
-        public override void OnAttachToDataGrid(DependencyObject s, DependencyPropertyChangedEventArgs e)
+        public override IFilter GetFilterObj()
         {
-            if (DataGridOwner != null)
-                DataGridOwner.Loaded += DataGridOwner_Loaded;
-
+            return  new DateRangeFilter(DataGridOwner .ModelView.ItemType, ColumnOwner.Property());
         }
 
-        private void DataGridOwner_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (Filter == null)
-                Filter = new DateRangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
-        }
-        public override void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
-        {
-            if (Filter == null)
-                Filter = new DateRangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
-        }
+        //public override void OnAttachToDataGrid(DependencyObject s, DependencyPropertyChangedEventArgs e)
+        //{
+
+
+        //}
+
+        //private void DataGridOwner_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    if (Filter == null)
+        //        Filter = new DateRangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
+        //}
+        //public override void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
+        //{
+        //    if (Filter == null)
+        //        Filter = new DateRangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
+        //}
     }
 }

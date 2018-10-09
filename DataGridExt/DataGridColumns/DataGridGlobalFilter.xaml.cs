@@ -15,9 +15,17 @@ namespace Controlls
             InitializeComponent();
         }
 
-        public override void OnAttachToDataGrid(DependencyObject s, DependencyPropertyChangedEventArgs e)
+        public override void OnAttachToDataGrid(DependencyObject s,  DependencyPropertyChangedEventArgs e)
         {
-            Filter = new GlobalFilter(DataGridOwner.ModelView.ItemType, DataGridOwner.ModelView.ItemType.GetProperties().Select(x => x.Name));
+            base.OnAttachToDataGrid(s,e);
+            var me = s as BaseFilterContainer;
+            me.SetFilterObj();
+            //Filter = new GlobalFilter(DataGridOwner.ModelView.ItemType,  DataGridOwner.ModelView.ItemType.GetProperties().Select(x => x.Name));
+        
+        }
+        public override IFilter GetFilterObj()
+        {
+            return new GlobalFilter(DataGridOwner.ModelView.ItemType, DataGridOwner.ModelView.ItemType.GetProperties().Select(x => x.Name));
 
         }
 

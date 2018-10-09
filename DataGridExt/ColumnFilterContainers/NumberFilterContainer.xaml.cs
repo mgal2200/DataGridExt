@@ -28,23 +28,28 @@ namespace Controlls
         {
             InitializeComponent();
         }
-        public override void OnAttachToDataGrid(DependencyObject s, DependencyPropertyChangedEventArgs e)
-        {
-            if (DataGridOwner != null)
-                DataGridOwner.Loaded += DataGridOwner_Loaded;
 
+        public override IFilter GetFilterObj()
+        {
+            return new RangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
         }
+        //public override void OnAttachToDataGrid(DependencyObject s, DependencyPropertyChangedEventArgs e)
+        //{
+        //    if (DataGridOwner != null)
+        //        DataGridOwner.Loaded += DataGridOwner_Loaded;
 
-        private void DataGridOwner_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (Filter == null)
-                Filter = new RangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
-        }
-        public override void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
-        {
-           if (Filter == null)
-                Filter = new RangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
-        }
+        //}
+
+        //private void DataGridOwner_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    if (Filter == null)
+        //        Filter = new RangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
+        //}
+        //public override void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
+        //{
+        //   if (Filter == null)
+        //        Filter = new RangeFilter(ColumnOwner.DataGridExt.ModelView.ItemType, ColumnOwner.Property());
+        //}
     }
     public class NumberFilterModelView
     {

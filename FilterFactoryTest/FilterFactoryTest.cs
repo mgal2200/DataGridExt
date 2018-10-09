@@ -16,8 +16,8 @@ namespace FilterFactoryTest
         public void TestRangeFilter()
         {
             var list = DataList.GetData();
-            RangeFilter rf = new RangeFilter(list.getty
-)
+           // RangeFilter rf = new RangeFilter(list.getty
+//)
         }
     }
 }
