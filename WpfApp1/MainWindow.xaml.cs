@@ -37,7 +37,12 @@ namespace WpfApp1
 
         List<Person> GetPersons()
         {
-            return Enumerable.Range(1, 10).Select(x => new Person { ID = x, Name = "צםגיק" + x.ToString(), DateTime = DateTime.Now.AddDays(x) }).ToList();
+            return Enumerable.Range(1, 10).Select(x => new Person {
+                ID = x,
+                DateTime = DateTime.Now.AddDays(x)
+                
+
+            }).ToList();
         }
     }
    
@@ -46,6 +51,7 @@ namespace WpfApp1
         public int? ID { get; set; }
         public string Name { get; set; }
         public DateTime? DateTime  { get; set; }
+        //public List<int> MyProperty { get; set; }
 
     }
 }

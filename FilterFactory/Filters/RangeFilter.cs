@@ -72,7 +72,7 @@ namespace FilterFactory
                 toExpr = Expression.LessThan(member, Expression.Constant(toval));
             }
             //Expression.Constant(fromval )
-            return Expression.And(toExpr, fromExpr);
+            return Expression.AndAlso(toExpr, fromExpr);
         }
 
         public IQueryable ApplyFilter(IQueryable queryable)

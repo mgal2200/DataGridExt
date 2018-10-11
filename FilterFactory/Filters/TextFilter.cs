@@ -29,10 +29,16 @@ namespace FilterFactory
         override public Expression GetFilterExpression(ParameterExpression param)
         {
             var member = BaseExpression (param);
+            if (string.IsNullOrEmpty(filterText))
+                return Expression.Constant(true);
             Expression valExpr = Expression.Constant(FilterText,typeof(string));
             MethodInfo method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
-            var containsMethodExp = Expression.Call(member, method, valExpr);
-            return containsMethodExp;
+            var isNullMtd = typeof(string).GetMethod("IsNullOrEmpty");
+            var isNullMtdExpr = Expression.Call( isNullMtd, member);
+            var notExpr = Expression.Not(isNullMtdExpr);
+            var containsMethodExpr = Expression.Call(member, method, valExpr);
+            var andExpr = Expression.AndAlso(notExpr, containsMethodExpr); 
+            return andExpr;
         }
         public override Expression BaseExpression(ParameterExpression param)
         {
