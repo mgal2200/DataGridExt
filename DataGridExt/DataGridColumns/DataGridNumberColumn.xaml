@@ -11,9 +11,7 @@
                     <DataTemplate>
                         <DockPanel>
                             <TextBlock Text="{Binding}" TextWrapping="Wrap" DockPanel.Dock="Top"/>
-                            <local:NumberFilterContainer      >
-                                
-                            </local:NumberFilterContainer>
+                            <local:NumberFilterContainer />
                         </DockPanel>
                     </DataTemplate>
                 </Setter.Value>

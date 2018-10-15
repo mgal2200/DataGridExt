@@ -11,7 +11,7 @@
     </local:BaseFilterContainer.Resources>
     <StackPanel >
        
-        <Popup IsOpen="{Binding IsChecked,ElementName=tgl}">
+        <Popup IsOpen="{Binding IsChecked,ElementName=tgl}" StaysOpen="False" >
             <StackPanel Name="fltrPanel" Style="{StaticResource panelStyle}" >
                 <UniformGrid Rows="2">
                     <TextBox Name="txbxFrom"  Text="{Binding From,UpdateSourceTrigger=PropertyChanged }"  DockPanel.Dock="Left"></TextBox>

@@ -11,7 +11,7 @@
     </local:BaseFilterContainer.Resources>
     <StackPanel >
         <ToggleButton Name="tgl"/>
-        <Popup IsOpen="{Binding IsChecked,ElementName=tgl}">
+        <Popup IsOpen="{Binding IsChecked,ElementName=tgl}" StaysOpen="False" >
             <StackPanel Name="fltrPanel" Style="{StaticResource panelStyle}" >
                 <TextBox  Text="{Binding FilterText,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource filtertxbx}"/>
             </StackPanel>
