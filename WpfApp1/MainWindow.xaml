@@ -19,7 +19,7 @@
 
                         </DataGrid.Columns>
                     </local1:DataGridExt>-->
-
+                    <DataGrid Name="abcd"></DataGrid>
                 </Grid>
             </TabItem>
             <TabItem>

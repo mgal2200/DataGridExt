@@ -31,7 +31,7 @@ namespace WpfApp1
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             abc.ItemsSource = GetPersons();
-           // abc1.ItemsSource = GetPersons();
+            abcd.ItemsSource = GetPersons();
 
         }
 

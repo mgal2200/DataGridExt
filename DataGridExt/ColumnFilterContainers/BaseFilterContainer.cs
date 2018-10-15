@@ -89,7 +89,7 @@ namespace Controlls
 
         private void DataGridOwner_ItemSourceChanged(System.Collections.IEnumerable oldValue, System.Collections.IEnumerable newValue)
         {
-            SetFilterObj();
+             SetFilterObj();
         }
 
         public virtual void OnAttachToDataGridColumn(DependencyObject s, DependencyPropertyChangedEventArgs e)
